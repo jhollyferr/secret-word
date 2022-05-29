@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import { Game } from './components/Game';
 import { GameOver } from './components/GameOver';
 import { StartScreen } from './components/StartScreen';
 
 import { stages, wordsList } from './data/words';
+const guessesQuantity = 3;
 
 export const App = () => {
 
@@ -15,7 +16,7 @@ export const App = () => {
   const [letters, setLetters] = useState([]);
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
-  const [guesses, setGuesses] = useState(3);
+  const [guesses, setGuesses] = useState(guessesQuantity);
   const [score, setScore] = useState(0)
 
   const [words] = useState(wordsList);
@@ -78,9 +79,27 @@ export const App = () => {
         ]
       )
     }
+
+    setGuesses(actualGuesses => actualGuesses - 1);
   }
 
+  const clearLetterStates = () => {
+    setGuessedLetters([]);
+    setWrongLetters([]);
+  }
+
+  useEffect(() => {
+    if (guesses <= 0) {
+      clearLetterStates();
+      setGameStage(end.name);
+    }
+  }, [guesses])
+
   const retry = () => {
+
+    setScore(0);
+    setGuesses(guessesQuantity);
+
     setGameStage(start.name);
   }
 
