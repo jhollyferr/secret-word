@@ -19,8 +19,11 @@ export const Game = ({
      * 
      * @param {Event} event 
      */
-    const handleChangeLetter = (event) => {
-        setLetter(event.target.value)
+
+    //event.target.value;
+    const handleChangeLetter = ({ target: { value } }) => {
+        value = value.replace(/[0-9]+$/, '');
+        setLetter(value)
     }
 
     /**
@@ -70,6 +73,8 @@ export const Game = ({
                         onChange={handleChangeLetter}
                         value={letter}
                         ref={letterInputRef}
+                        maxLength="1"
+                        minLength="1"
                     />
                     <button>Jogar</button>
                 </form>

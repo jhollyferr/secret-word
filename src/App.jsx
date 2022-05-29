@@ -48,8 +48,36 @@ export const App = () => {
     setGameStage(end.name);
   }
 
+  /**
+   * 
+   * @param {String} letter 
+   */
   const verifyLetter = (letter) => {
-    console.log(letter)
+    const normalizedLetter = letter.toLowerCase();
+
+    const hasGuessedLetter = guessedLetters.includes(normalizedLetter);
+    const hasWrongLetter = wrongLetters.includes(normalizedLetter);
+    const hasLetter = letters.includes(normalizedLetter);
+
+    if (hasGuessedLetter || hasWrongLetter) {
+      return;
+    }
+
+    if (hasLetter) {
+      setGuessedLetters(
+        (actualGuessedLetters) => [
+          ...actualGuessedLetters,
+          normalizedLetter
+        ]
+      )
+    } else {
+      setWrongLetters(
+        (actualWrongLetters) => [
+          ...actualWrongLetters,
+          normalizedLetter
+        ]
+      )
+    }
   }
 
   const retry = () => {
