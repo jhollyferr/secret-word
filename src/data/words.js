@@ -6,3 +6,9 @@ export const wordsList = {
     programação: ["Linguagem", "Framework", "JavaScript", "React"],
     alimento: ["Arroz", "Feijão", "Carne", "Leite", "Ovo"],
 };
+
+export const stages = [
+    { id: 1, name: 'start' },
+    { id: 2, name: 'game' },
+    { id: 3, name: 'end' }
+]
