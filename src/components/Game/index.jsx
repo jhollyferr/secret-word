@@ -8,11 +8,17 @@ export const Game = ({ handleVerifyLetter }) => {
             </p>
             <h1>Advinhe a palavra:</h1>
             <h3 className="tip">
-                Dica sobre a palavra: <span>Dica...</span>
+                Dica sobre a palavra: <span>Fruta</span>
             </h3>
             <div className="wordContainer">
                 <span className="letter">A</span>
-                <span className="blankSquare"></span>
+                <span className="blankSquare">B</span>
+                <span className="blankSquare">A</span>
+                <span className="blankSquare">C</span>
+                <span className="blankSquare">A</span>
+                <span className="blankSquare">T</span>
+                <span className="blankSquare">E</span>
+
             </div>
             <div className="letterContainer">
                 <p>Tente adivinhar uma letra da palavra:</p>
