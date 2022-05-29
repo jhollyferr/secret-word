@@ -12,7 +12,11 @@ export const App = () => {
   const [gameStage, setGameStage] = useState(start.name);
   const [pickedWord, setPickedWord] = useState('');
   const [pickedCategory, setPickedCategory] = useState('');
-  const [letters, setLetters] = useState('');
+  const [letters, setLetters] = useState([]);
+  const [guessedLetters, setGuessedLetters] = useState([]);
+  const [wrongLetters, setWrongLetters] = useState([]);
+  const [guesses, setGuesses] = useState(3);
+  const [score, setScore] = useState(0)
 
   const [words] = useState(wordsList);
 
@@ -60,7 +64,16 @@ export const App = () => {
       }
 
       {
-        gameStage.includes(game.name) && <Game handleVerifyLetter={verifyLetter} />
+        gameStage.includes(game.name) && <Game
+          handleVerifyLetter={verifyLetter}
+          pickedWord={pickedWord}
+          pickedCategory={pickedCategory}
+          letters={letters}
+          guessedLetters={guessedLetters}
+          wrongLetters={wrongLetters}
+          guesses={guesses}
+          score={score}
+        />
       }
 
       {
