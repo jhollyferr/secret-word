@@ -48,8 +48,8 @@ export const App = () => {
     setGameStage(end.name);
   }
 
-  const verifyLetter = () => {
-    setGameStage(end.name);
+  const verifyLetter = (letter) => {
+    console.log(letter)
   }
 
   const retry = () => {
