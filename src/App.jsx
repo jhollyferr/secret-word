@@ -124,7 +124,10 @@ export const App = () => {
       }
 
       {
-        gameStage.includes(end.name) && <GameOver handleRetry={retry} />
+        gameStage.includes(end.name) && <GameOver
+          handleRetry={retry}
+          score={score}
+        />
       }
 
 
