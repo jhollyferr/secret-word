@@ -1,10 +1,11 @@
-import { useCallback, useEffect, useState } from 'react';
-import './App.css';
+import { Fragment, useCallback, useEffect, useState } from 'react';
 import { Game } from './components/Game';
 import { GameOver } from './components/GameOver';
 import { StartScreen } from './components/StartScreen';
 
 import { stages, wordsList } from './data/words';
+import { GlobalStyle } from './globalStyles';
+import { Container } from './styles';
 const guessesQuantity = 3;
 
 export const App = () => {
@@ -57,10 +58,6 @@ export const App = () => {
     setLetters(wordLetters);
     setGameStage(game.name);
   }, [pickedWordAndCategory, game])
-
-  const endGame = () => {
-    setGameStage(end.name);
-  }
 
   /**
    * 
@@ -134,34 +131,38 @@ export const App = () => {
   }
 
   return (
-    <div className="App">
+    <Fragment>
+      <Container>
 
-      {
-        gameStage.includes(start.name) && <StartScreen handleStartGame={startGame} />
-      }
+        {
+          gameStage.includes(start.name) && <StartScreen handleStartGame={startGame} />
+        }
 
-      {
-        gameStage.includes(game.name) && <Game
-          handleVerifyLetter={verifyLetter}
-          pickedWord={pickedWord}
-          pickedCategory={pickedCategory}
-          letters={letters}
-          guessedLetters={guessedLetters}
-          wrongLetters={wrongLetters}
-          guesses={guesses}
-          score={score}
-        />
-      }
+        {
+          gameStage.includes(game.name) && <Game
+            handleVerifyLetter={verifyLetter}
+            pickedWord={pickedWord}
+            pickedCategory={pickedCategory}
+            letters={letters}
+            guessedLetters={guessedLetters}
+            wrongLetters={wrongLetters}
+            guesses={guesses}
+            score={score}
+          />
+        }
 
-      {
-        gameStage.includes(end.name) && <GameOver
-          handleRetry={retry}
-          score={score}
-        />
-      }
+        {
+          gameStage.includes(end.name) && <GameOver
+            handleRetry={retry}
+            score={score}
+          />
+        }
 
 
-    </div>
+      </Container>
+
+      <GlobalStyle/>
+    </Fragment>
   );
 }
 

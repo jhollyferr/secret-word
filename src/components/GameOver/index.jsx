@@ -1,11 +1,11 @@
-import './index.css';
+import { Container } from './styles';
 
 export const GameOver = ({ handleRetry, score}) => {
     return (
-        <div>
+        <Container>
             <h1>Fim de Jogo!</h1>
             <h2>A sua pontuação foi <span>{score}</span></h2>
             <button onClick={handleRetry}>Resetar jogo</button>
-        </div>
+        </Container>
     )
 }

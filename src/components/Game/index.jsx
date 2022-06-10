@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import './index.css';
+import { Container, WordContainer, LetterContainer} from './style';
 
 export const Game = ({
     handleVerifyLetter,
@@ -38,7 +38,7 @@ export const Game = ({
     }
 
     return (
-        <div className="game">
+        <Container>
             <p className="points">
                 <span>Pontuação: {score}</span>
             </p>
@@ -47,7 +47,7 @@ export const Game = ({
                 Dica sobre a palavra: <span>{pickedCategory}</span>
             </h3>
             <p>Você ainda tem {guesses} tentativa(s)</p>
-            <div className="wordContainer">
+            <WordContainer>
                 {
                     letters.map(
                         (letter, index) => (
@@ -61,8 +61,9 @@ export const Game = ({
                         )
                     )
                 }
-            </div>
-            <div className="letterContainer">
+            </WordContainer>
+
+            <LetterContainer>
                 <p>Tente adivinhar uma letra da palavra:</p>
                 <form onSubmit={handleSubmitLetter}>
                     <input
@@ -78,7 +79,7 @@ export const Game = ({
                     />
                     <button>Jogar</button>
                 </form>
-            </div>
+            </LetterContainer>
             <div className="wrongLettersContainer">
                 <p>Letras já utilizadas:</p>
                 {
@@ -89,6 +90,6 @@ export const Game = ({
                     )
                 }
             </div>
-        </div >
+        </Container >
     )
 }
